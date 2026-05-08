@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    {
+      "source": "/proxy/iss-now",
+      "destination": "http://api.open-notify.org/iss-now.json"
+    },
+    {
+      "source": "/proxy/astros",
+      "destination": "http://api.open-notify.org/astros.json"
+    },
+    {
+      "source": "/proxy/news",
+      "destination": "https://newsdata.io/api/1/latest"
+    }
+  ]
+}
