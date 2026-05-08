@@ -1,0 +1,189 @@
+/* ─── Google Fonts — must be first ───────────────────── */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ─── Base Reset ──────────────────────────────────────── */
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Inter', system-ui, sans-serif;
+  background: #020817;
+  color: #e2e8f0;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* ─── Scrollbar ───────────────────────────────────────── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: rgba(255,255,255,0.03); }
+::-webkit-scrollbar-thumb { background: rgba(0,212,255,0.3); border-radius: 99px; }
+::-webkit-scrollbar-thumb:hover { background: rgba(0,212,255,0.6); }
+
+/* ─── Animated background ────────────────────────────── */
+.bg-animated {
+  background: linear-gradient(-45deg, #020817, #0a0f1e, #0d1530, #111b3a);
+  background-size: 400% 400%;
+  animation: gradient-x 20s ease infinite;
+}
+
+@keyframes gradient-x {
+  0%,100% { background-position: 0% 50%; }
+  50%      { background-position: 100% 50%; }
+}
+
+/* ─── Glassmorphism ───────────────────────────────────── */
+.glass {
+  background: rgba(255,255,255,0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+}
+
+.glass-hover {
+  transition: all 0.3s ease;
+}
+.glass-hover:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(0,212,255,0.25);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 32px rgba(0,0,0,0.4), 0 0 20px rgba(0,212,255,0.1);
+}
+
+/* ─── Neon accents ────────────────────────────────────── */
+.neon-blue  { color: #00d4ff; }
+.neon-green { color: #00ff94; }
+.neon-purple{ color: #a855f7; }
+.neon-pink  { color: #ff006e; }
+
+.neon-border-blue   { border-color: rgba(0,212,255,0.4); }
+.neon-border-purple { border-color: rgba(168,85,247,0.4); }
+.neon-border-green  { border-color: rgba(0,255,148,0.4); }
+
+.neon-glow-blue   { box-shadow: 0 0 20px rgba(0,212,255,0.25); }
+.neon-glow-purple { box-shadow: 0 0 20px rgba(168,85,247,0.25); }
+.neon-glow-green  { box-shadow: 0 0 20px rgba(0,255,148,0.25); }
+
+/* ─── Gradient text ───────────────────────────────────── */
+.gradient-text {
+  background: linear-gradient(135deg, #00d4ff, #a855f7);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+.gradient-text-green {
+  background: linear-gradient(135deg, #00ff94, #00d4ff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ─── Buttons ─────────────────────────────────────────── */
+.btn-primary {
+  @apply px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300;
+  background: linear-gradient(135deg, #00d4ff22, #a855f722);
+  border: 1px solid rgba(0,212,255,0.4);
+  color: #00d4ff;
+}
+.btn-primary:hover {
+  background: linear-gradient(135deg, #00d4ff33, #a855f733);
+  box-shadow: 0 0 20px rgba(0,212,255,0.2);
+  transform: translateY(-1px);
+}
+.btn-primary:active { transform: translateY(0); }
+
+.btn-ghost {
+  @apply px-4 py-2 rounded-xl font-medium text-sm transition-all duration-300;
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.1);
+  color: #94a3b8;
+}
+.btn-ghost:hover {
+  border-color: rgba(255,255,255,0.2);
+  color: #e2e8f0;
+  background: rgba(255,255,255,0.05);
+}
+
+/* ─── Cards ───────────────────────────────────────────── */
+.stat-card {
+  @apply glass glass-hover p-5 flex flex-col gap-2;
+}
+
+/* ─── Skeleton loader ─────────────────────────────────── */
+.skeleton {
+  background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.1) 50%, rgba(255,255,255,0.05) 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+  border-radius: 8px;
+}
+@keyframes shimmer {
+  0%   { background-position: -200% 0; }
+  100% { background-position:  200% 0; }
+}
+
+/* ─── Leaflet map overrides ───────────────────────────── */
+.leaflet-container {
+  background: #0a0f1e !important;
+  border-radius: 16px;
+  z-index: 0;
+}
+.leaflet-tile { filter: brightness(0.6) saturate(0.4) hue-rotate(200deg); }
+.leaflet-control-attribution { display: none !important; }
+.leaflet-control-zoom a {
+  background: rgba(10,15,30,0.9) !important;
+  color: #00d4ff !important;
+  border-color: rgba(0,212,255,0.3) !important;
+}
+.leaflet-popup-content-wrapper {
+  background: rgba(10,15,30,0.95) !important;
+  border: 1px solid rgba(0,212,255,0.3) !important;
+  color: #e2e8f0 !important;
+  border-radius: 12px !important;
+  backdrop-filter: blur(12px);
+}
+.leaflet-popup-tip { background: rgba(10,15,30,0.95) !important; }
+
+/* ─── Recharts overrides ──────────────────────────────── */
+.recharts-cartesian-grid line { stroke: rgba(255,255,255,0.05) !important; }
+.recharts-tooltip-wrapper { z-index: 100; }
+
+/* ─── Chat bubble animations ──────────────────────────── */
+.chat-bubble { animation: slideUp 0.25s ease-out; }
+
+/* ─── Sidebar ─────────────────────────────────────────── */
+.sidebar-item {
+  @apply flex items-center gap-3 px-4 py-3 rounded-xl transition-all duration-300 cursor-pointer text-slate-400 text-sm font-medium;
+}
+.sidebar-item:hover {
+  @apply text-white;
+  background: rgba(255,255,255,0.06);
+}
+.sidebar-item.active {
+  color: #00d4ff;
+  background: rgba(0,212,255,0.1);
+  border: 1px solid rgba(0,212,255,0.2);
+}
+
+/* ─── Pulse dot ───────────────────────────────────────── */
+.pulse-dot {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: #00ff94;
+  box-shadow: 0 0 8px #00ff94;
+  animation: pulse 2s infinite;
+}
+
+/* ─── Light mode ──────────────────────────────────────── */
+:root.light body {
+  background: #f0f4f8;
+  color: #1a202c;
+}
+:root.light .glass {
+  background: rgba(255,255,255,0.7);
+  border-color: rgba(0,0,0,0.1);
+}
